@@ -34,5 +34,5 @@ void Token::print(){
         case 16: typestr = "UNDEFINED"; break;
         case 17: typestr = "EOF"; break;
     }
-    cout << "(" << typestr << "," << input << "," << lineNumber << ")" << endl;
+    cout << "(" << typestr << ",\"" << input << "\"," << lineNumber << ")" << endl;
 }

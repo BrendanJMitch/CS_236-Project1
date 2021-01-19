@@ -12,8 +12,9 @@ class Automaton {
 
     public:
     Automaton(TokenType type);
+    virtual ~Automaton();
     virtual int read(string& input) = 0;
-    virtual Token* CreateToken(std::string input, int lineNumber);
+    virtual Token CreateToken(std::string input, int lineNumber);
     virtual int NewLinesRead() const;
 };
 

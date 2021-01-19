@@ -10,10 +10,14 @@ MatcherAuto::MatcherAuto(TokenType type, std::string ID) : Automaton(type){
 }
 
 int MatcherAuto::read(std::string& input){
+    newLines = 0;
     bool accept = true;
     for (int i = 0; i < (int)ID.size() && accept; i++){
         if(input[i] != ID[i]){
             accept = false;
+        }
+        if(input[i] == '\n'){
+            newLines++;
         }
     }
     if (accept){
