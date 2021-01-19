@@ -11,9 +11,5 @@ class Token{
     int lineNumber;
 
     public:
-    Token(TokenType type, string input, int lineNumber){
-            this->type = type;
-            this->input = input;
-            this->lineNumber = lineNumber;
-    }
+    Token(TokenType type, string input, int lineNumber);
 };
