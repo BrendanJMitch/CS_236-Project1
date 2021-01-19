@@ -7,7 +7,7 @@ class MatcherAuto : public Automaton {
     std::string ID;
 
     public:
-    MatcherAuto(TokenType type) : Automaton(type){
-    }
+    MatcherAuto(TokenType type);
+    MatcherAuto(TokenType type, std::string ID);
     virtual int read(std::string& input);
 };
