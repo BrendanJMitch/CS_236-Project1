@@ -11,15 +11,9 @@ class Automaton {
     TokenType type;
 
     public:
-    Automaton(TokenType type){
-        this->type = type;
-    }
+    Automaton(TokenType type);
     virtual int read(string& input) = 0;
-    virtual Token* CreateToken(std::string input, int lineNumber) {
-        return new Token(type, input, lineNumber); 
-    }
-    virtual int NewLinesRead() const { 
-        return newLines; 
-    }
+    virtual Token* CreateToken(std::string input, int lineNumber);
+    virtual int NewLinesRead() const;
 };
 
