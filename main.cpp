@@ -16,8 +16,6 @@ int main (int argc, char *argv[]){
     ifstream fin(argv[1]);
     string input((std::istreambuf_iterator<char>(fin)), (std::istreambuf_iterator<char>()));
 
-    cout << input << endl;
-
     Lexer lexer;
     vector<Token> Tokens = lexer.Run(input);
 

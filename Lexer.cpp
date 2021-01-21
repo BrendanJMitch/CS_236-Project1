@@ -36,6 +36,14 @@ vector<Token> Lexer::Run(string input){  //Check for newline reliability
         maxCharsRead = 0;
         maxIndex = 0;
         maxNewlines = 0;
+
+        while(isspace(input[0])){
+            if(input[0] == '\n'){
+                lineNumber++;
+            }
+            input.erase(0,1);
+        }
+
         for (int i = 0; i < numAutos; i++){
             charsRead = Autos[i]->read(input);
             if (charsRead > maxCharsRead){
@@ -44,6 +52,7 @@ vector<Token> Lexer::Run(string input){  //Check for newline reliability
                 maxNewlines = Autos[i]->NewLinesRead();
             }
         }
+
         if (maxCharsRead > 0){
             lineNumber += maxNewlines;
             Tokens.push_back(Autos[maxIndex]->CreateToken(input.substr(0,maxCharsRead), lineNumber));
@@ -51,6 +60,7 @@ vector<Token> Lexer::Run(string input){  //Check for newline reliability
             maxCharsRead = 1;
             Tokens.push_back(Token(UNDEFINED, input.substr(0,1), lineNumber));
         }
+
         input.erase(0,maxCharsRead);
     }
     return Tokens;
