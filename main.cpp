@@ -22,5 +22,6 @@ int main (int argc, char *argv[]){
     for (unsigned int i = 0; i < Tokens.size(); i++){
         Tokens[i].print();
     }
+    cout << "Total Tokens = " << Tokens.size() << endl;
 
 }

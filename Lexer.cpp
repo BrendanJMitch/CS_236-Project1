@@ -17,6 +17,8 @@ Lexer::Lexer(){
     Autos.push_back(new MatcherAuto(FACTS, "Facts"));
     Autos.push_back(new MatcherAuto(RULES, "Rules"));
     Autos.push_back(new MatcherAuto(QUERIES, "Queries"));
+    Autos.push_back(new IDAuto(ID));
+    Autos.push_back(new StringAuto(STRING));
 }
 
 Lexer::~Lexer(){
@@ -62,6 +64,9 @@ vector<Token> Lexer::Run(string input){  //Check for newline reliability
         }
 
         input.erase(0,maxCharsRead);
+        if (input.size() == 0){
+            Tokens.push_back(Token(FEND, "", lineNumber));
+        }
     }
     return Tokens;
 }

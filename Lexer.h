@@ -2,6 +2,8 @@
 #include <vector>
 #include "Automaton.h"
 #include "MatcherAuto.h"
+#include "IDAuto.h"
+#include "StringAuto.h"
 #include "Token.h"
 #include "TokenType.h"
 
