@@ -19,6 +19,7 @@ Lexer::Lexer(){
     Autos.push_back(new MatcherAuto(QUERIES, "Queries"));
     Autos.push_back(new IDAuto(ID));
     Autos.push_back(new StringAuto(STRING));
+    Autos.push_back(new CommentAuto(COMMENT));
 }
 
 Lexer::~Lexer(){
@@ -27,7 +28,7 @@ Lexer::~Lexer(){
     }
 }
 
-vector<Token> Lexer::Run(string input){  //Check for newline reliability 
+vector<Token> Lexer::Run(string input){
     lineNumber = 1;
     int numAutos = Autos.size();
     int charsRead = 0;
@@ -58,10 +59,10 @@ vector<Token> Lexer::Run(string input){  //Check for newline reliability
         if (maxCharsRead > 0){
             lineNumber += maxNewlines;
             Tokens.push_back(Autos[maxIndex]->CreateToken(input.substr(0,maxCharsRead), lineNumber));
-        } else {
-            maxCharsRead = 1;
-            Tokens.push_back(Token(UNDEFINED, input.substr(0,1), lineNumber));
-        }
+        } else {                                                                    // TODO: remove this section once UndefAuto is implemented
+            maxCharsRead = 1;                                                       //
+            Tokens.push_back(Token(UNDEFINED, input.substr(0,1), lineNumber));      //
+        }                                                                           //
 
         input.erase(0,maxCharsRead);
         if (input.size() == 0){
