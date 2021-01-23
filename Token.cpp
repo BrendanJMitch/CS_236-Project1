@@ -2,6 +2,7 @@
 #include "TokenType.h"
 #include <typeinfo>
 #include <iostream>
+#include <fstream>
 #include <string> 
 using namespace std;
 
@@ -13,6 +14,10 @@ Token::Token(TokenType type, string input, int lineNumber){
 }
 
 void Token::print(){
+    cout << this->toString();
+}
+
+string Token::toString(){
     string typestr;
     switch(type){
         case 0: typestr = "COMMA"; break;
@@ -34,5 +39,5 @@ void Token::print(){
         case 16: typestr = "UNDEFINED"; break;
         case 17: typestr = "EOF"; break;
     }
-    cout << "(" << typestr << ",\"" << input << "\"," << lineNumber << ")" << endl;
+    return "(" + typestr + ",\"" + input + "\"," + to_string(lineNumber) + ")\n";
 }

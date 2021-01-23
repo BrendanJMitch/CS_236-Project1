@@ -1,5 +1,7 @@
 #include "UndefAuto.h"
 #include "TokenType.h"
+#include <iostream>
+using namespace std;
 
 
 
@@ -25,7 +27,7 @@ int UndefAuto::badComment(string input){
 }
 
 int UndefAuto::badString(string input){
-    for(unsigned int i = 3; i < input.size(); i++){
+    for(unsigned int i = 1; i < input.size(); i++){
         if(input[i] == '\''){
             if(i + 1 < input.size() && input[i + 1] == '\''){
                 i++;
@@ -43,7 +45,7 @@ int UndefAuto::read(std::string& input){
     newLines = 0;
     if (input[0] == '\''){
         return badString(input);
-    } else if (input[1] == '#'){
+    } else if (input[0] == '#'){
         return badComment(input);
     } else {
         return (input.size() > 0);

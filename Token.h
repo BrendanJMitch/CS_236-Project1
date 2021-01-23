@@ -13,4 +13,5 @@ class Token{
     public:
     Token(TokenType type, string input, int lineNumber);
     void print();
+    string toString();
 };

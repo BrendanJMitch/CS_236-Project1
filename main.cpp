@@ -19,9 +19,10 @@ int main (int argc, char *argv[]){
     Lexer lexer;
     vector<Token> Tokens = lexer.Run(input);
 
+    string answer = "";
     for (unsigned int i = 0; i < Tokens.size(); i++){
-        Tokens[i].print();
+        answer += Tokens[i].toString();
     }
-    cout << "Total Tokens = " << Tokens.size() << endl;
-
+    answer += "Total Tokens = " + to_string(Tokens.size());
+    cout << answer << endl;
 }
