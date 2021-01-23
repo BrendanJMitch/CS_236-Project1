@@ -20,6 +20,7 @@ Lexer::Lexer(){
     Autos.push_back(new IDAuto(ID));
     Autos.push_back(new StringAuto(STRING));
     Autos.push_back(new CommentAuto(COMMENT));
+    Autos.push_back(new UndefAuto(UNDEFINED));
 }
 
 Lexer::~Lexer(){
@@ -57,12 +58,9 @@ vector<Token> Lexer::Run(string input){
         }
 
         if (maxCharsRead > 0){
-            lineNumber += maxNewlines;
             Tokens.push_back(Autos[maxIndex]->CreateToken(input.substr(0,maxCharsRead), lineNumber));
-        } else {                                                                    // TODO: remove this section once UndefAuto is implemented
-            maxCharsRead = 1;                                                       //
-            Tokens.push_back(Token(UNDEFINED, input.substr(0,1), lineNumber));      //
-        }                                                                           //
+            lineNumber += maxNewlines;
+        }                                                                           
 
         input.erase(0,maxCharsRead);
         if (input.size() == 0){

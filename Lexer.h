@@ -5,6 +5,7 @@
 #include "IDAuto.h"
 #include "StringAuto.h"
 #include "CommentAuto.h"
+#include "UndefAuto.h"
 #include "Token.h"
 #include "TokenType.h"
 

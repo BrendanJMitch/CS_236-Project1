@@ -16,6 +16,8 @@ int CommentAuto::multiLine(string input){
             } else {
                 return 0;
             }
+        } else if (input[i] == '\n'){
+            newLines++;
         }
     }
     return 0;
